@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/cn'
+import { school } from '@/config/school'
 import type { Subject } from '@/data/academics'
 
 const tones = {
@@ -22,7 +23,7 @@ export function Portrait({ name, tone, className, src }: { name: string; tone: k
         <path d="M40 380 C 40 270, 90 225, 150 225 C 210 225, 260 270, 260 380 Z" fill={ink} opacity=".85" />
         <text x="150" y="166" textAnchor="middle" fontFamily="Space Grotesk, sans-serif" fontSize="40" fontWeight="600" fill={a}>{initials}</text>
       </svg>
-      <span className="absolute left-3 top-3 rounded-full bg-black/40 px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">Sample profile</span>
+      {school.isSampleContent && <span className="absolute left-3 top-3 rounded-full bg-black/40 px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">Sample profile</span>}
     </div>
   )
 }

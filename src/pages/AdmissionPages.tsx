@@ -22,7 +22,7 @@ export function AdmissionsPage() {
         seoTitle={`Admissions ${school.academicYear}`}
         title={['Every great future', <>starts with <span className="accent text-sun">one step.</span></>]}
         eyebrow={`Admissions ${school.academicYear} · ${school.admissionsOpen ? 'Open' : 'Closed'}`}
-        description="Discover the right learning environment for your child and take the next step with confidence."
+        description="Admissions from Nursery to Class X at a CBSE-affiliated school in K R Puram, Bengaluru — quality education at an affordable cost, with no donation."
         crumbs={crumbs}
       >
         <div className="flex flex-wrap gap-3">
@@ -92,9 +92,9 @@ export function AdmissionsPage() {
 
       <section id="fees" className="scroll-mt-32 bg-sage py-20 sm:py-28">
         <div className="container-x grid gap-6 md:grid-cols-3">
-          <Link to="/admissions/fees" className="group rounded-[2rem] bg-cream p-7 hover:bg-white"><h2 className="font-display text-2xl font-semibold">Fees & payment</h2><p className="mt-2 text-sm text-muted-strong">Tuition, one-time charges and payment information.</p><span className="mt-6 block font-semibold text-forest">View fee structure →</span></Link>
+          <Link to="/admissions/fees" className="group rounded-[2rem] bg-cream p-7 hover:bg-white"><h2 className="font-display text-2xl font-semibold">Fees & payment</h2><p className="mt-2 text-sm text-muted-strong">Term-wise fees for {school.academicYear}, Nursery to Class X.</p><span className="mt-6 block font-semibold text-forest">View fee structure →</span></Link>
           {school.offers.scholarships && <Link to="/admissions/scholarships" className="group rounded-[2rem] bg-cream p-7 hover:bg-white"><h2 className="font-display text-2xl font-semibold">Scholarships</h2><p className="mt-2 text-sm text-muted-strong">Merit and need-based support, where offered.</p><span className="mt-6 block font-semibold text-forest">Learn more →</span></Link>}
-          <Link to="/visit" className="group rounded-[2rem] bg-violet p-7 text-white hover:bg-[#5a3fd1]"><h2 className="font-display text-2xl font-semibold">Book a campus visit</h2><p className="mt-2 text-sm text-white/85">Saturdays, by appointment.</p><span className="mt-6 block font-semibold text-sun">Choose a date →</span></Link>
+          <Link to="/visit" className="group rounded-[2rem] bg-violet p-7 text-white hover:bg-[#5a3fd1]"><h2 className="font-display text-2xl font-semibold">Book a campus visit</h2><p className="mt-2 text-sm text-white/85">By appointment with the school office.</p><span className="mt-6 block font-semibold text-sun">Choose a date →</span></Link>
         </div>
       </section>
 
@@ -117,9 +117,9 @@ export function ApplyPage() {
           <MultiStepEnquiryForm />
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-[2rem] bg-white p-7">
-              <h2 className="font-display text-xl font-semibold">Prefer paper?</h2>
-              <p className="mt-2 text-sm text-muted-strong">Download the application form and submit it at the school office with the required documents.</p>
-              <ul className="mt-4 space-y-2">{admissionDownloads.map((d) => <li key={d.href}><a href={d.href} download className="flex items-center gap-2 text-sm font-semibold text-forest hover:underline"><FileDown className="size-4" aria-hidden="true" />{d.label}</a></li>)}</ul>
+              <h2 className="font-display text-xl font-semibold">Prefer to visit or call?</h2>
+              <p className="mt-2 text-sm text-muted-strong">Collect the application form at the school office or call {school.contact.phone}. Useful documents:</p>
+              <ul className="mt-4 space-y-2">{admissionDownloads.map((d) => <li key={d.href}><a href={d.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-semibold text-forest hover:underline"><FileDown className="size-4" aria-hidden="true" />{d.label}</a></li>)}</ul>
             </div>
             <div className="rounded-[2rem] bg-violet p-7 text-white">
               <h2 className="font-display text-xl font-semibold">What happens next?</h2>
@@ -138,14 +138,14 @@ export function ApplyPage() {
 export function VisitPage() {
   return (
     <>
-      <PageHero seoTitle="Book a Campus Visit" title={['Book a', <span className="accent text-sun">campus visit.</span>]} eyebrow="See it in person" description="Walk the corridors, peek into classrooms and meet our team. Visits usually take about 60 minutes." crumbs={[...crumbs, { name: 'Book a Visit', path: '/visit' }]} />
+      <PageHero seoTitle="Book a Campus Visit" title={['Book a', <span className="accent text-sun">campus visit.</span>]} eyebrow="See it in person" description="Walk the corridors, see our classrooms and playgrounds and meet our team at Pai Layout, K R Puram." crumbs={[...crumbs, { name: 'Book a Visit', path: '/visit' }]} />
       <section className="bg-cream py-16 sm:py-24">
         <div className="container-x grid gap-10 lg:grid-cols-[1.3fr_0.7fr]">
           <MultiStepEnquiryForm mode="visit" />
           <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
             {[
-              { icon: CalendarCheck, t: 'When', d: 'Saturdays, 9:30 AM – 12:30 PM (sample timings — confirm with the office).' },
-              { icon: Sparkles, t: 'What to expect', d: 'A guided tour, a conversation with admissions and time for your questions.' },
+              { icon: CalendarCheck, t: 'When', d: `By appointment — call ${school.contact.phone} to fix a convenient time.` },
+              { icon: Sparkles, t: 'What to expect', d: 'A walk around the campus, a conversation with the school team and time for your questions.' },
               { icon: MapPin, t: 'Where', d: school.contact.addressLines.slice(1).join(', ') },
             ].map(({ icon: Icon, t, d }) => (
               <div key={t} className="flex gap-4 rounded-[1.75rem] bg-white p-6"><Icon className="size-6 shrink-0 text-forest" aria-hidden="true" /><div><h2 className="font-display font-semibold">{t}</h2><p className="mt-1 text-sm text-muted-strong">{d}</p></div></div>

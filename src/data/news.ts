@@ -7,96 +7,126 @@ export interface NewsArticle {
   slug: string
   title: string
   category: NewsCategory
-  date: string // ISO
+  date: string // ISO — the date the item was published on the school website
   excerpt: string
   body: string[]
   theme: ArtTheme
   featured?: boolean
+  image?: string
   document?: { label: string; href: string }
 }
 
-/** SAMPLE ARTICLES — replace with the school's real announcements. */
+const DOCS = 'http://www.newprathampublicschool.in'
+
+/** News and notices published by the school. */
 export const news: NewsArticle[] = [
   {
-    slug: 'admissions-open-2027-28',
-    title: 'Admissions open for the 2027–28 academic session',
-    category: 'Announcements',
-    date: '2026-10-12',
-    excerpt: 'Applications are now invited for Nursery to Grade 11. Families can begin with an online enquiry and book a campus visit.',
-    body: [
-      'We are pleased to announce that admissions for the 2027–28 academic session are now open, subject to seat availability in each grade.',
-      'Families are encouraged to begin with an online enquiry. Our admissions team will then help you schedule a campus visit and guide you through eligibility, documents and next steps.',
-      'Please refer to the admissions page for the complete process and the list of required documents. Fee information is shared by the admissions office on request.',
-    ],
-    theme: 'campus',
-    featured: true,
-    document: { label: 'Admission guidelines (sample PDF)', href: '/documents/admission-guidelines-sample.pdf' },
-  },
-  {
-    slug: 'term-1-examination-schedule',
-    title: 'Term 1 examination schedule released',
-    category: 'Exams',
-    date: '2026-10-08',
-    excerpt: 'The Term 1 assessment schedule for Grades 3–10 has been shared. Download the timetable and preparation guidance.',
-    body: ['The Term 1 assessment schedule for Grades 3 to 10 is now available.', 'Students will receive revision guidance from subject teachers. Please contact the class teacher with any questions.'],
-    theme: 'classroom',
-    document: { label: 'Examination schedule (sample PDF)', href: '/documents/exam-schedule-sample.pdf' },
-  },
-  {
-    slug: 'parent-teacher-meeting-november',
-    title: 'Parent–teacher meetings in November',
-    category: 'Academics',
-    date: '2026-10-05',
-    excerpt: 'Slots for the mid-term parent–teacher meetings will open through the parent portal.',
-    body: ['Mid-term parent–teacher meetings will be held in November. Booking details will be shared through the parent portal and by circular.', 'Meetings are an opportunity to review progress, discuss wellbeing and plan support together.'],
-    theme: 'kids',
-  },
-  {
-    slug: 'sports-day-announcement',
-    title: 'Annual Sports Day: save the date',
-    category: 'Sports',
-    date: '2026-09-28',
-    excerpt: 'Our annual sports day brings every house together for a day of athletics, games and celebration.',
-    body: ['The annual sports day will be held in December. Students will take part in track events, team games and house relays.', 'Parents are warmly invited. Detailed timings and seating information will follow by circular.'],
-    theme: 'sports',
-  },
-  {
-    slug: 'october-newsletter',
-    title: 'The NovaVerse Newsletter — October edition',
-    category: 'Newsletters',
-    date: '2026-09-30',
-    excerpt: 'Highlights from the month: the science week, new library collections and student voices.',
-    body: ['This month’s newsletter features science week, new additions to the library and reflections written by students.'],
-    theme: 'library',
-    document: { label: 'October newsletter (sample PDF)', href: '/documents/newsletter-october-sample.pdf' },
-  },
-  {
-    slug: 'circular-transport-routes',
-    title: 'Circular: transport route updates',
-    category: 'Circulars',
-    date: '2026-09-22',
-    excerpt: 'Updated pick-up timings for selected routes. Please read and acknowledge.',
-    body: ['Pick-up timings on selected routes have been revised. The updated route list is attached.', 'For questions, please contact the transport desk via the school office.'],
-    theme: 'transport',
-    document: { label: 'Transport circular (sample PDF)', href: '/documents/transport-circular-sample.pdf' },
-  },
-  {
-    slug: 'festival-holidays',
-    title: 'Festival holiday notice',
+    slug: 'dasara-vacation-2026',
+    title: 'Dasara vacation: 14 – 21 October 2026',
     category: 'Holidays',
-    date: '2026-10-15',
-    excerpt: 'School will remain closed for the festival break. Classes resume as per the academic calendar.',
-    body: ['The school will remain closed for the festival break as per the academic calendar. Please check the events calendar for exact dates.'],
+    date: '2026-10-14',
+    excerpt: 'The school will remain closed for the Dasara vacation from 14 to 21 October 2026. Classes reopen on Thursday, 22 October 2026.',
+    body: [
+      'As per the Calendar of Events 2026–27, the Dasara vacation is from 14 October to 21 October 2026, including Maha Navami (19 October) and Vijaya Dashami (20 October).',
+      'School reopens on Thursday, 22 October 2026. We wish all our families a joyful Dasara.',
+    ],
     theme: 'celebration',
   },
   {
-    slug: 'science-week-recap',
-    title: 'Science week: questions, experiments and a lot of curiosity',
+    slug: 'class-x-results-2025-26',
+    title: 'Class X CBSE results: 100% pass for the second year running',
+    category: 'Academics',
+    date: '2026-09-29',
+    excerpt: 'All 65 students who appeared for the CBSE Class X board examination in 2025–26 have passed — following 100% results in 2024–25.',
+    body: [
+      'We are proud to share that all 65 students who appeared for the CBSE Class X board examination in 2025–26 passed, giving New Pratham Public School a 100% pass result.',
+      'This follows 100% results in 2024–25 (77 of 77 students) and 98.07% in 2023–24 (76 of 77 students).',
+      'Congratulations to our Prathamites, their parents and our dedicated teachers.',
+    ],
+    theme: 'award',
+    featured: true,
+    document: { label: 'Three-year results (PDF)', href: `${DOCS}/Link_of_ThreeYearResult/ThreeYearResult.pdf` },
+  },
+  {
+    slug: 'academic-calendar-2026-27',
+    title: 'Calendar of Events and Holiday List 2026–27',
+    category: 'Circulars',
+    date: '2026-09-29',
+    excerpt: 'Periodic assessments, celebrations, holidays and vacations for the 2026–27 academic year.',
+    body: [
+      'The Calendar of Events and Holiday List for 2026–27 is now available.',
+      'Periodic Assessments are scheduled on 13 July (PA-1), 19 August (PA-2), 2 December (PA-3) and 8 February (PA-4). Annual examinations begin on 15 March 2027.',
+      'The Dasara vacation is from 14 to 21 October 2026 and the winter break from 25 December 2026, with school reopening on Monday, 4 January 2027.',
+    ],
+    theme: 'library',
+    document: { label: 'Academic calendar 2026–27 (PDF)', href: `${DOCS}/AcademicCalendar/academiccalendar.pdf` },
+  },
+  {
+    slug: 'fee-structure-2026-27',
+    title: 'Fee structure 2026–27 for existing students',
+    category: 'Announcements',
+    date: '2026-09-29',
+    excerpt: 'The term-wise fee structure for 2026–27, from Nursery to Class X, is now published.',
+    body: [
+      'The fee structure for existing students for the 2026–27 academic year has been published. Fees are payable in three terms.',
+      'See the Fees page for class-wise amounts, or download the official fee structure below. NPPS follows the concept of no donation.',
+    ],
+    theme: 'campus',
+    document: { label: 'Fee structure 2026–27 (PDF)', href: `${DOCS}/FeeStructure/fees.pdf` },
+  },
+  {
+    slug: 'educonnect-excellent-rating',
+    title: 'NPPS rated “Excellent” by EduConnectIn',
+    category: 'Announcements',
+    date: '2026-05-06',
+    excerpt: 'Our school has been conferred an “Excellent” rating by EduConnectIn, standing out among 6,775 schools across Bengaluru.',
+    body: [
+      'Our school is proud to announce that it has been conferred an “Excellent” rating by EduConnectIn, standing out among 6,775 schools across Bengaluru.',
+      'This prestigious recognition reflects our unwavering commitment to academic excellence, holistic development and quality education.',
+      'The EduConnectIn evaluation assessed schools on multiple parameters, including teaching–learning practices, student engagement, infrastructure, innovation and overall institutional effectiveness. Achieving an Excellent rating in such a comprehensive and competitive assessment is a significant milestone for our school.',
+    ],
+    theme: 'award',
+    image: '/images/achievements/educonnect-excellent.jpg',
+  },
+  {
+    slug: 'india-k12-awards-2025',
+    title: 'NPPS receives the India K-12 Award (IKA) 2025',
     category: 'Events',
-    date: '2026-09-15',
-    excerpt: 'Students turned the campus into a laboratory for a week of experiments and demonstrations.',
-    body: ['Science week saw students across grades run experiments, host demonstrations and present questions they want to investigate further.', 'Thank you to the families who visited the open-lab afternoon.'],
-    theme: 'science',
+    date: '2026-05-06',
+    excerpt: 'Our school has been honoured with the prestigious K-12 Award, recognising our commitment to academic excellence and holistic education.',
+    body: [
+      'We are proud to announce that our school has been honoured with the prestigious K-12 Award, a recognition of our unwavering commitment to academic excellence and holistic education.',
+      'This achievement reflects the collective efforts of our dedicated educators, enthusiastic students and supportive parent community.',
+    ],
+    theme: 'award',
+    image: '/images/achievements/india-k12-awards.jpg',
+  },
+  {
+    slug: 'victory-quantum-sports-meet',
+    title: 'Victory Quantum: our kho-kho girls win the inter-school sports meet',
+    category: 'Sports',
+    date: '2026-05-06',
+    excerpt: 'NPPS hosted the inter-school sports meet — and our kho-kho girls’ team emerged as the winners.',
+    body: [
+      'Our school proudly hosted the inter-school sports meet, bringing together young athletes from various schools to celebrate sportsmanship, teamwork and healthy competition.',
+      'The event provided a vibrant platform for students to showcase their athletic skills while fostering friendship and mutual respect among participating schools.',
+      'Adding to the pride of the occasion, our kho-kho girls’ team delivered an outstanding performance and emerged as the winners, earning well-deserved applause and admiration from all.',
+    ],
+    theme: 'sports',
+    image: '/images/achievements/victory-quantum.jpg',
+  },
+  {
+    slug: 'inter-school-abacus-competition',
+    title: 'Abacus: a celebration of mental-maths excellence',
+    category: 'Events',
+    date: '2026-05-06',
+    excerpt: 'Our students took part in an inter-school abacus competition at Adharsh International School, Hoskote.',
+    body: [
+      'An exciting inter-school abacus competition was hosted at Adharsh International School, Hoskote, bringing together young maths enthusiasts from various schools to showcase their mental calculation skills.',
+      'The event witnessed enthusiastic participation from students, who demonstrated exceptional speed, accuracy and concentration.',
+    ],
+    theme: 'math',
+    image: '/images/achievements/abacus.jpg',
   },
 ]
 

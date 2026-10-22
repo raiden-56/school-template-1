@@ -1,8 +1,8 @@
-# NovaVerse International School — website
+# New Pratham Public School — website
 
-A light, colourful, immersive school website built with React, Vite and TypeScript. It has 3D scenes, scroll-driven storytelling and a full set of school pages: admissions, fees, academics, campus, safety, news, events, gallery, resources, policies and contact.
+The website of New Pratham Public School (NPPS), a CBSE-affiliated school (Affiliation No. 830770) in Pai Layout, K R Puram, Bengaluru. It is built with React, Vite and TypeScript, with 3D scenes, scroll-driven storytelling and a full set of school pages: admissions, fees, academics, campus, safety, news, events, gallery, resources, policies and contact.
 
-> **All school content is sample content.** Names, figures, policies and images are placeholders and are clearly labelled on the site. Replace them with verified, approved information before publishing (see [Replacing the content](#replacing-the-content)).
+> **Content source.** School content comes from the school's existing website (newprathampublicschool.in), its CBSE mandatory public disclosure, and the fee structure, academic calendar and results PDFs linked from it. Photos in `public/images` come from the same site. Official documents (certificates, fee structure, calendar, results) are linked to the files hosted on the existing website.
 
 ## Quick start
 
@@ -11,7 +11,7 @@ npm install
 npm run dev        # http://localhost:5173
 npm run build      # type-check + production build into dist/
 npm run preview    # serve the production build
-npm run assets     # regenerate sample PDFs in public/documents and public/sitemap.xml
+npm run assets     # regenerate public/sitemap.xml
 ```
 
 Requires Node 18+.
@@ -48,7 +48,7 @@ src/
   pages/                  ← route pages (About, Academics, Admissions, Campus, News, Info pages)
   lib/                    ← gsap setup, hooks, api (form submission), ics (add-to-calendar), formatting
 public/
-  documents/              ← downloadable PDFs (generated samples — replace with official files)
+  images/                 ← school photos (from the existing website)
   robots.txt, sitemap.xml, og-image.svg, favicon.svg
 scripts/generate-assets.mjs
 ```
@@ -64,7 +64,7 @@ Home `/` · About `/about` · Mission & Vision `/about/mission-vision` · Princi
 3. **Content** — edit the files in `src/data/`. Values left as `null` display "To be published by the school office". **Fees, affiliation numbers, results and certifications are never invented.**
 4. **Photos** — anywhere an `ArtImage` is used you can pass `src` (or set `src` on gallery items / `photo` on educators). Until then a colourful illustration with a visible "Sample visual" tag is shown, so it is never mistaken for the real campus.
 5. **Testimonials & achievements** — the current entries are labelled placeholders. Publish only approved quotes, results and names (with consent).
-6. **Documents** — replace the PDFs in `public/documents/` with the official files (keep the file names or update the links in `src/data`).
+6. **Documents** — official PDFs are linked from `officialDocs` in `src/data/info.ts`. Update those URLs if the files move.
 7. **Domain** — update `siteUrl` in `school.ts`, `SITE` in `scripts/generate-assets.mjs` and the sitemap line in `public/robots.txt`, then run `npm run assets`.
 8. When everything is real, set `school.isSampleContent = false` to hide the sample-content notes.
 

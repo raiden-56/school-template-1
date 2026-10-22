@@ -69,7 +69,7 @@ export function StudentSafetySection({ compact = false }: { compact?: boolean })
                   <p className="mt-2 text-sm leading-relaxed text-muted-strong">{s.text}</p>
                   {s.policy && (
                     s.policy.endsWith('.pdf')
-                      ? <a href={s.policy} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-forest underline-offset-4 hover:underline">Read policy (PDF) <ArrowUpRight className="size-4" aria-hidden="true" /></a>
+                      ? <a href={s.policy} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-forest underline-offset-4 hover:underline">View certificate (PDF) <ArrowUpRight className="size-4" aria-hidden="true" /><span className="sr-only">(opens in a new tab)</span></a>
                       : <Link to={s.policy} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-forest underline-offset-4 hover:underline">Read policy <ArrowUpRight className="size-4" aria-hidden="true" /></Link>
                   )}
                 </motion.li>

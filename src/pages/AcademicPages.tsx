@@ -20,8 +20,8 @@ export function AcademicsPage() {
   useSetHeaderTone('light')
   return (
     <>
-      <PageHero tone="cream" seoTitle="Academics and Curriculum" title={['Academics', <>& <span className="accent text-forest">curriculum.</span></>]} eyebrow={school.affiliation.board} description="A rigorous board curriculum, extended with inquiry, design, the arts and real-world projects." crumbs={[{ name: 'Academics', path: '/academics' }]}>
-        <div className="flex flex-wrap gap-3"><ButtonLink to="/academics/stages" variant="dark">Learning stages</ButtonLink><ButtonLink to="/documents/syllabus-overview-sample.pdf" variant="outline-dark">Syllabus overview (PDF)</ButtonLink></div>
+      <PageHero tone="cream" seoTitle="Academics and Curriculum" title={['Academics', <>& <span className="accent text-forest">curriculum.</span></>]} eyebrow={school.affiliation.board} description="The CBSE curriculum from Nursery to Class X, mapped to NEP 2020 and delivered through facilitated, experiential learning." crumbs={[{ name: 'Academics', path: '/academics' }]}>
+        <div className="flex flex-wrap gap-3"><ButtonLink to="/academics/stages" variant="dark">Learning stages</ButtonLink><ButtonLink to="/events" variant="outline-dark">Academic calendar</ButtonLink></div>
       </PageHero>
       <AcademicSubjectGrid />
       <section className="bg-white py-20 sm:py-28" aria-labelledby="subject-detail-title">

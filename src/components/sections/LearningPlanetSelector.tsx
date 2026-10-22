@@ -80,7 +80,7 @@ export function LearningPlanetSelector() {
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
            
-            eyebrow="The learning universe"
+            eyebrow="Nursery to Class X"
             lines={[<span id="universe-title">Every stage,</span>, <>its own <span className="accent text-violet">world.</span></>]}
             intro="Each learning stage orbits the same core — curiosity — while giving children exactly what they need at their age."
           />

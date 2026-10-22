@@ -1,6 +1,6 @@
 /**
- * SAMPLE PROFILES — fictional placeholders. Replace with approved staff
- * information and photographs (with consent) before publishing.
+ * Teaching staff as published in the school's CBSE mandatory public disclosure
+ * (Section F — Teacher details). Add photos (with consent) via `photo`.
  */
 export interface Educator {
   id: string
@@ -14,21 +14,81 @@ export interface Educator {
   photo?: string
 }
 
-export const departments = ['All', 'Leadership', 'Early Years', 'Sciences', 'Mathematics', 'Languages', 'Arts', 'Sports', 'Student Support'] as const
+export const departments = ['All', 'Leadership', 'Pre-Primary', 'Primary', 'Secondary', 'Physical Education', 'Student Support'] as const
 
-export const educators: Educator[] = [
-  { id: 'principal', name: 'Dr. A. Sample', role: 'Principal', department: 'Leadership', qualifications: 'Qualifications to be published', bio: 'Leads the school’s academic vision and culture of care, with a focus on inquiry-led learning and teacher development.', tone: 'lavender' },
-  { id: 'vice-principal', name: 'Ms. B. Placeholder', role: 'Vice Principal', department: 'Leadership', qualifications: 'Qualifications to be published', bio: 'Oversees academic planning, assessment and the day-to-day running of the school.', tone: 'sage' },
-  { id: 'early-years-lead', name: 'Ms. C. Example', role: 'Early Years Coordinator', department: 'Early Years', qualifications: 'Qualifications to be published', bio: 'Designs the play-based early years programme and partners closely with families.', tone: 'peach' },
-  { id: 'physics', name: 'Mr. D. Sample', role: 'Senior Teacher, Physics', department: 'Sciences', qualifications: 'Qualifications to be published', bio: 'Believes every concept should be seen, tested and questioned in the lab.', tone: 'emerald' },
-  { id: 'biology', name: 'Ms. E. Placeholder', role: 'Teacher, Biology', department: 'Sciences', qualifications: 'Qualifications to be published', bio: 'Runs the eco club and the school garden research projects.', tone: 'sage' },
-  { id: 'maths', name: 'Mr. F. Example', role: 'Head of Mathematics', department: 'Mathematics', qualifications: 'Qualifications to be published', bio: 'Builds number confidence through puzzles, maths labs and Olympiad preparation.', tone: 'lavender' },
-  { id: 'english', name: 'Ms. G. Sample', role: 'Head of English', department: 'Languages', qualifications: 'Qualifications to be published', bio: 'Leads the reading programme, literature circles and the school magazine.', tone: 'peach' },
-  { id: 'hindi', name: 'Mr. H. Placeholder', role: 'Teacher, Hindi', department: 'Languages', qualifications: 'Qualifications to be published', bio: 'Brings language alive through poetry, theatre and storytelling.', tone: 'emerald' },
-  { id: 'art', name: 'Ms. I. Example', role: 'Art & Design Lead', department: 'Arts', qualifications: 'Qualifications to be published', bio: 'Curates the student exhibition and the design-thinking studio.', tone: 'peach' },
-  { id: 'music', name: 'Mr. J. Sample', role: 'Music Teacher', department: 'Arts', qualifications: 'Qualifications to be published', bio: 'Directs the school choir and instrumental ensembles.', tone: 'lavender' },
-  { id: 'sports', name: 'Mr. K. Placeholder', role: 'Head of Physical Education', department: 'Sports', qualifications: 'Qualifications to be published', bio: 'Coaches athletics and football, and leads the annual sports day.', tone: 'emerald' },
-  { id: 'counsellor', name: 'Ms. L. Example', role: 'School Counsellor', department: 'Student Support', qualifications: 'Qualifications to be published', bio: 'Supports student wellbeing, social-emotional learning and career guidance.', tone: 'sage' },
+type Designation = 'PRINCIPAL' | 'PGT' | 'TGT' | 'PRT' | 'NTT' | 'PET' | 'SPECIAL EDUCATOR' | 'WELLNESS TEACHER' | 'OTHER'
+
+const designation: Record<Designation, { role: string; department: (typeof departments)[number]; bio: string }> = {
+  PRINCIPAL: { role: 'Principal', department: 'Leadership', bio: 'Leads the academic vision of New Pratham Public School and its faculty.' },
+  PGT: { role: 'Post Graduate Teacher (PGT)', department: 'Secondary', bio: 'Post Graduate Teacher at New Pratham Public School.' },
+  TGT: { role: 'Trained Graduate Teacher (TGT)', department: 'Secondary', bio: 'Trained Graduate Teacher at New Pratham Public School.' },
+  PRT: { role: 'Primary Teacher (PRT)', department: 'Primary', bio: 'Primary Teacher at New Pratham Public School.' },
+  NTT: { role: 'Nursery Teacher (NTT)', department: 'Pre-Primary', bio: 'Pre-primary teacher at New Pratham Public School.' },
+  PET: { role: 'Physical Education Teacher', department: 'Physical Education', bio: 'Physical Education Teacher — sports, fitness and yoga.' },
+  'SPECIAL EDUCATOR': { role: 'Special Educator', department: 'Student Support', bio: 'Supports students with additional learning needs.' },
+  'WELLNESS TEACHER': { role: 'Counsellor & Wellness Teacher', department: 'Student Support', bio: 'Counselling and wellbeing support for students and families.' },
+  OTHER: { role: 'Staff', department: 'Secondary', bio: 'Staff member at New Pratham Public School.' },
+}
+
+/** [name, designation, qualification] — in the order listed in the disclosure. */
+const staff: [string, Designation, string][] = [
+  ['K. Jeevarathnam Reddy', 'PRINCIPAL', 'M.Com., M.Ed.'],
+  ['Priya R.', 'SPECIAL EDUCATOR', 'B.Ed. (Special Education), MCA'],
+  ['Alice A.', 'WELLNESS TEACHER', 'M.Sc. (Psychology), B.Ed.'],
+  ['M. Uma', 'PGT', 'M.Tech., B.Ed.'],
+  ['Sowjanya M.', 'PGT', 'M.Ed.'],
+  ['Latha K.', 'PGT', 'B.Ed.'],
+  ['Rasmita Sahoo', 'TGT', 'B.Ed.'],
+  ['Deepa C. N.', 'TGT', 'B.Ed.'],
+  ['C. Kayalvizhi', 'TGT', 'B.E.'],
+  ['Suman Sharma', 'TGT', 'B.Ed.'],
+  ['R. Priya', 'TGT', 'B.Ed.'],
+  ['Sangeetha Anand', 'TGT', 'M.Sc.'],
+  ['Parimala D.', 'TGT', 'B.A.'],
+  ['Roopa R.', 'TGT', 'M.A.'],
+  ['Suma C.', 'TGT', 'B.A.'],
+  ['E. Angelina Michael', 'TGT', 'B.E.'],
+  ['Janaki Kumari Sahu', 'TGT', 'M.A.'],
+  ['Ajitha S.', 'TGT', 'M.Sc.'],
+  ['K. Monisha', 'TGT', 'B.E.'],
+  ['Kalavathy', 'TGT', 'M.Sc., M.Phil.'],
+  ['Anuroopa Anil', 'TGT', 'B.Ed.'],
+  ['Rajni Kumari', 'TGT', 'B.A.'],
+  ['Ashalatha S. R.', 'TGT', 'M.A.'],
+  ['Roshini Singh', 'PRT', 'D.Ed.'],
+  ['Chitra N.', 'PRT', 'D.Ed.'],
+  ['Mary Jacinitha', 'PRT', 'PUC'],
+  ['Sivapriya S.', 'PRT', 'B.A.'],
+  ['Kalaivani S.', 'PRT', 'B.A.'],
+  ['Menaga R.', 'PRT', 'B.Ed.'],
+  ['Lakshmi Karthick', 'PRT', 'D.El.Ed.'],
+  ['Rokhaiya', 'PRT', 'B.Ed.'],
+  ['Saumya Achar', 'PRT', 'B.Com.'],
+  ['Rabiabasri K.', 'PRT', 'B.E.'],
+  ['Deepali Anand', 'PRT', 'M.Sc.'],
+  ['Vidyashree Daga', 'PRT', 'B.A.'],
+  ['Prabha K.', 'NTT', 'Dip. in Computer, Dip. in Art & Craft, NTT'],
+  ['M. Yamuna', 'NTT', 'PUC, NTT'],
+  ['Bhavani', 'NTT', 'PUC'],
+  ['Praveena K.', 'NTT', 'B.A.'],
+  ['Jayashreebai P.', 'NTT', 'B.A.'],
+  ['Netala Sambharamma', 'PET', 'UGD'],
+  ['Yalamanchili Sivaji Ganesh', 'PET', 'B.Sc.'],
+  ['Malathi', 'OTHER', 'MCA'],
 ]
+
+const tones: Educator['tone'][] = ['lavender', 'peach', 'sage', 'emerald']
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+export const educators: Educator[] = staff.map(([name, d, qualifications], i) => ({
+  id: d === 'PRINCIPAL' ? 'principal' : slug(name),
+  name,
+  role: designation[d].role,
+  department: designation[d].department,
+  qualifications,
+  bio: designation[d].bio,
+  tone: tones[i % tones.length],
+  photo: d === 'PRINCIPAL' ? '/images/leadership/principal.jpg' : undefined,
+}))
 
 export const getEducator = (id: string) => educators.find((e) => e.id === id)

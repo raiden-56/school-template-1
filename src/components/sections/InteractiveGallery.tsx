@@ -53,12 +53,20 @@ function Lightbox({ items, index, onClose, onIndex }: { items: GalleryItem[]; in
                 className="w-full max-w-5xl touch-pan-y"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] sm:aspect-[16/10]">
-                  {item.type === 'video' && item.videoUrl ? (
+                  {item.type === 'video' && item.youtubeId ? (
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?rel=0`}
+                      title={item.title}
+                      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="h-full w-full bg-black"
+                    />
+                  ) : item.type === 'video' && item.videoUrl ? (
                     <video src={item.videoUrl} controls className="h-full w-full bg-black object-contain" />
                   ) : (
                     <ArtImage theme={item.theme} alt={item.title} src={item.src} seed={Number(item.id.slice(1))} iconScale={0.8} />
                   )}
-                  {item.type === 'video' && !item.videoUrl && (
+                  {item.type === 'video' && !item.videoUrl && !item.youtubeId && (
                     <div className="absolute inset-x-4 bottom-12 rounded-2xl bg-white/95 p-4 text-sm shadow-xl sm:inset-x-auto sm:right-4 sm:max-w-sm">
                       <p className="font-semibold">Video not yet published</p>
                       <p className="mt-1 text-plum/75">Add a <code>videoUrl</code> for this item in <code>src/data/community.ts</code> to play it here.</p>

@@ -8,53 +8,50 @@ export interface AdmissionStep {
 
 /** Configure to match the school's real admission process. */
 export const admissionSteps: AdmissionStep[] = [
-  { title: 'Submit an enquiry', text: 'Tell us about your child and the grade you are applying for. It takes about two minutes.', cta: { label: 'Start enquiry', href: '/admissions/apply' } },
-  { title: 'Schedule a campus visit', text: 'Walk the campus, see classrooms in action and meet our admissions team.', cta: { label: 'Book a visit', href: '/visit' } },
-  { title: 'Review eligibility & documents', text: 'Check age criteria for the grade and keep the required documents ready.' },
-  { title: 'Complete the application', text: 'Submit the application form along with the required documents.' },
-  { title: 'Interaction or assessment', text: 'An age-appropriate interaction (and for some grades, a short assessment) helps us understand your child.' },
-  { title: 'Admission decision', text: 'The admissions office will communicate the decision by email and phone.' },
-  { title: 'Enrollment formalities', text: 'Complete fee payment and enrollment paperwork to confirm the seat.' },
+  { title: 'Submit an enquiry', text: 'Fill in the admission enquiry form or call the school office on 080 4095 4645. Tell us about your child and the class you are applying for.', cta: { label: 'Start enquiry', href: '/admissions/apply' } },
+  { title: 'Visit the campus', text: 'Visit us at Pai Layout, K R Puram, see our classrooms and playgrounds and meet the school team.', cta: { label: 'Book a visit', href: '/visit' } },
+  { title: 'Check eligibility & documents', text: 'Check the age criteria for the class and keep the required documents ready.' },
+  { title: 'Complete the application', text: 'Collect and submit the application form at the school office along with the required documents.' },
+  { title: 'Interaction', text: 'A short, age-appropriate interaction helps us understand your child.' },
+  { title: 'Fee payment & enrolment', text: 'Pay the first-term fee as per the published fee structure to confirm the seat. No donation is charged.' },
 ]
 
 export const gradesOffered = [
-  'Nursery', 'LKG', 'UKG', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12',
+  'Nursery', 'LKG', 'UKG', 'Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10',
 ] as const
 
 export const currentGradeOptions = ['Not yet in school', 'Playgroup', ...gradesOffered] as const
 
-/** Grades open for application this session. */
-export const gradesOpen = gradesOffered.filter((g) => g !== 'Grade 10' && g !== 'Grade 12')
+/** Classes open for application this session — seat availability is confirmed by the school office. */
+export const gradesOpen = [...gradesOffered]
 
-/** Age criteria — illustrative. Confirm against board and state regulations. */
+/** Age criteria follow CBSE and Government of Karnataka norms; confirm with the school office. */
 export const ageCriteria: { grade: string; age: string }[] = [
   { grade: 'Nursery', age: '3+ years as on the cut-off date' },
   { grade: 'LKG', age: '4+ years as on the cut-off date' },
   { grade: 'UKG', age: '5+ years as on the cut-off date' },
-  { grade: 'Grade 1', age: '6+ years as on the cut-off date' },
-  { grade: 'Grades 2 – 9 & 11', age: 'Based on previous grade completion and transfer certificate' },
+  { grade: 'Class 1', age: '6+ years as on the cut-off date' },
+  { grade: 'Classes 2 – 10', age: 'Based on completion of the previous class and transfer certificate' },
 ]
-export const ageCutOffNote = 'The cut-off date and age criteria follow applicable board and state regulations and will be confirmed by the admissions office.'
+export const ageCutOffNote = 'The cut-off date and age criteria follow CBSE and Government of Karnataka regulations and are confirmed by the school office at the time of admission.'
 
 export const requiredDocuments = [
   'Birth certificate (copy)',
   'Recent passport-size photographs of the student',
   'Proof of residence',
-  'Previous school report card (Grade 1 onwards)',
-  'Transfer certificate (Grade 2 onwards, at enrollment)',
-  'Parent/guardian identity proof',
-  'Medical / immunisation record',
+  'Aadhaar card of the student and parents',
+  'Previous school report card (Class 1 onwards)',
+  'Transfer certificate (Class 2 onwards, at enrolment)',
 ]
 
 export const admissionDates = [
-  { label: 'Enquiries open', value: 'October 2026 (sample)' },
-  { label: 'Campus visits', value: 'Every Saturday, by appointment' },
+  { label: 'Enquiries', value: 'Open — call 080 4095 4645 or use the enquiry form' },
+  { label: 'Campus visits', value: 'By appointment with the school office' },
   { label: 'Application deadline', value: notPublished },
-  { label: 'Session begins', value: notPublished },
+  { label: 'Academic year', value: 'June to April, as per the academic calendar' },
 ]
 
 export const admissionDownloads = [
-  { label: 'Admission guidelines', href: '/documents/admission-guidelines-sample.pdf', size: 'PDF · sample' },
-  { label: 'Application form', href: '/documents/application-form-sample.pdf', size: 'PDF · sample' },
-  { label: 'Fee schedule', href: '/documents/fee-schedule-sample.pdf', size: 'PDF · sample' },
+  { label: 'Fee structure 2026–27', href: 'http://www.newprathampublicschool.in/FeeStructure/fees.pdf', size: 'PDF' },
+  { label: 'Academic calendar 2026–27', href: 'http://www.newprathampublicschool.in/AcademicCalendar/academiccalendar.pdf', size: 'PDF' },
 ]

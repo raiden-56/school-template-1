@@ -50,7 +50,7 @@ export function NewsPage() {
 
   return (
     <>
-      <PageHero tone="cream" seoTitle="News and Notices" title={['News', <>& <span className="accent text-forest">notices.</span></>]} eyebrow="School news" description="Announcements, circulars, examination schedules, newsletters and stories from around the school." crumbs={[{ name: 'News', path: '/news' }]} />
+      <PageHero tone="cream" seoTitle="News and Notices" title={['News', <>& <span className="accent text-forest">notices.</span></>]} eyebrow="School news" description="Announcements, circulars, results, awards and stories from New Pratham Public School." crumbs={[{ name: 'News', path: '/news' }]} />
       <section className="bg-cream pb-20 sm:pb-28">
         <div className="container-x">
           <SampleNote>Sample articles for demonstration. Downloadable PDFs are sample documents.</SampleNote>
@@ -109,7 +109,7 @@ export function ArticlePage() {
           <p className="mt-8 flex flex-wrap gap-3 text-sm"><span className="rounded-full bg-violet px-3 py-1 font-semibold text-white">{a.category}</span><time dateTime={a.date} className="py-1 text-muted-strong">{formatDate(a.date)}</time></p>
           <h1 className="mt-5 text-big font-semibold">{a.title}</h1>
           <p className="mt-5 text-xl leading-relaxed text-muted-strong">{a.excerpt}</p>
-          <div className="mt-10 aspect-[16/8] overflow-hidden rounded-[2rem]"><ArtImage theme={a.theme} alt={a.title} /></div>
+          <div className="mt-10 aspect-[16/8] overflow-hidden rounded-[2rem]"><ArtImage theme={a.theme} alt={a.title} src={a.image} /></div>
           <div className="prose-school mt-10 text-lg">{a.body.map((p, i) => <p key={i}>{p}</p>)}</div>
           {a.document && <ButtonLink to={a.document.href} download variant="dark" className="mt-4"><FileDown className="size-4" aria-hidden="true" />{a.document.label}</ButtonLink>}
           <SampleNote className="mt-10">This is a sample article.</SampleNote>
@@ -126,8 +126,8 @@ export function ArticlePage() {
 export function EventsPage() {
   return (
     <>
-      <PageHero tone="sage" seoTitle="Events Calendar" title={['Events', <span className="accent text-forest">calendar.</span>]} eyebrow={`Academic year ${school.academicYear}`} description="Term dates, holidays, examinations, parent meetings, sports and cultural events. Add any event to your own calendar." crumbs={[{ name: 'News', path: '/news' }, { name: 'Events', path: '/events' }]}>
-        <ButtonLink to="/documents/academic-calendar-sample.pdf" download variant="dark">Download academic calendar (PDF)</ButtonLink>
+      <PageHero tone="sage" seoTitle="Events Calendar" title={['Events', <span className="accent text-forest">calendar.</span>]} eyebrow={`Academic year ${school.academicYear}`} description="The school’s Calendar of Events and Holiday List — periodic assessments, holidays, celebrations and sports days. Add any event to your own calendar." crumbs={[{ name: 'News', path: '/news' }, { name: 'Events', path: '/events' }]}>
+        <ButtonLink to="http://www.newprathampublicschool.in/AcademicCalendar/academiccalendar.pdf" variant="dark">Download academic calendar (PDF)</ButtonLink>
       </PageHero>
       <section className="bg-sage pb-20 sm:pb-28">
         <div className="container-x">

@@ -3,7 +3,6 @@ import { FileDown, HandCoins, Receipt } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Accordion } from '@/components/ui/Accordion'
 import { ButtonLink } from '@/components/ui/Button'
-import { SampleNote } from '@/components/ui/misc'
 import { feeCategories, feeConditions } from '@/data/info'
 import { admissionDownloads } from '@/data/admissions'
 import { notPublished, school } from '@/config/school'
@@ -17,9 +16,9 @@ export function FeeTeaser() {
           <div className="flex gap-5">
             <span className="hidden size-16 shrink-0 place-items-center rounded-2xl bg-violet text-white sm:grid"><Receipt className="size-7" aria-hidden="true" /></span>
             <div>
-              <h2 id="fee-teaser-title" className="font-display text-3xl font-semibold sm:text-4xl">Transparent fees & scholarships</h2>
+              <h2 id="fee-teaser-title" className="font-display text-3xl font-semibold sm:text-4xl">Transparent fees, no donation</h2>
               <p className="mt-3 max-w-2xl leading-relaxed text-muted-strong">
-                Clear information on tuition, one-time charges, transport and financial assistance — with no hidden costs and no donations required for admission.
+                High-quality education at an affordable cost. Our term-wise fee structure for {school.academicYear} is published for every class, from Nursery to Class X — and no donation is required for admission.
               </p>
             </div>
           </div>
@@ -38,7 +37,7 @@ export function FeeInformation() {
   return (
     <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
       <div>
-        <SampleNote force>Amounts are shown only once approved by school management. Until then they read “{notPublished}”.</SampleNote>
+        <p className="text-muted-strong">Fee structure {school.academicYear} for existing students, as published by the school. Fees are payable in three terms. Charges for new admissions are shared by the school office.</p>
         <Accordion
           className="mt-6 rounded-[2rem] bg-white px-6 sm:px-8"
           defaultOpen={0}
@@ -73,7 +72,7 @@ export function FeeInformation() {
         <div className="rounded-[2rem] bg-violet p-7 text-white">
           <HandCoins className="size-8 text-sun" aria-hidden="true" />
           <h2 className="mt-4 font-display text-2xl font-semibold">Fee enquiry</h2>
-          <p className="mt-2 text-sm text-white/85">Questions about fees, instalments or concessions? Our accounts office will help.</p>
+          <p className="mt-2 text-sm text-white/85">Questions about fees or payment? Call the school office on {school.contact.phone} or write to us.</p>
           <div className="mt-6 flex flex-col gap-3">
             <ButtonLink to="/contact?subject=Fees">Ask about fees</ButtonLink>
             <a href={`mailto:${school.contact.admissionsEmail}?subject=Fee%20enquiry`} className="text-center text-sm underline underline-offset-4">{school.contact.admissionsEmail}</a>
@@ -83,7 +82,7 @@ export function FeeInformation() {
           <h2 className="font-display text-xl font-semibold">Downloads</h2>
           <ul className="mt-4 space-y-2">
             {admissionDownloads.map((d) => (
-              <li key={d.href}><a href={d.href} download className="flex items-center justify-between gap-3 rounded-2xl bg-cream px-4 py-3 text-sm font-medium hover:bg-sage"><span className="flex items-center gap-2"><FileDown className="size-4 text-forest" aria-hidden="true" />{d.label}</span><span className="text-xs text-muted-strong">{d.size}</span></a></li>
+              <li key={d.href}><a href={d.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 rounded-2xl bg-cream px-4 py-3 text-sm font-medium hover:bg-sage"><span className="flex items-center gap-2"><FileDown className="size-4 text-forest" aria-hidden="true" />{d.label}</span><span className="text-xs text-muted-strong">{d.size}</span></a></li>
             ))}
           </ul>
         </div>

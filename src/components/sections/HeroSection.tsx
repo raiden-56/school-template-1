@@ -13,9 +13,9 @@ import { school } from '@/config/school'
 const HeroCampusScene = lazy(() => import('@/components/three/HeroCampusScene'))
 
 const chips = [
-  { text: 'Smart classrooms', cls: 'left-4 top-5 bg-white text-plum sm:left-6 sm:top-6' },
-  { text: 'Gardens & labs', cls: 'right-4 top-16 bg-sun text-plum sm:right-6 sm:top-20' },
-  { text: 'Sports & arts', cls: 'bottom-5 left-6 bg-peach text-plum sm:bottom-6 sm:left-10' },
+  { text: 'A/C classrooms', cls: 'left-4 top-5 bg-white text-plum sm:left-6 sm:top-6' },
+  { text: '100% Class X results', cls: 'right-4 top-16 bg-sun text-plum sm:right-6 sm:top-20' },
+  { text: 'Two playgrounds', cls: 'bottom-5 left-6 bg-peach text-plum sm:bottom-6 sm:left-10' },
 ]
 
 /** Section A — compact, single-screen hero: copy on the left, 3D floating campus in its own card. */
@@ -54,7 +54,7 @@ export function HeroSection() {
             transition={{ delay: 0.1 }}
             className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-forest shadow-sm ring-1 ring-plum/5 sm:text-sm"
           >
-            <Sparkles className="size-4 text-violet" aria-hidden="true" /> Admissions {school.academicYear} now open
+            <Sparkles className="size-4 text-violet" aria-hidden="true" /> {school.admissionsOpen ? 'Admission enquiries open · Nursery to Class X' : `CBSE affiliated · ${school.affiliation.affiliationNumber}`}
           </motion.p>
 
           <RevealText
@@ -63,9 +63,9 @@ export function HeroSection() {
             delay={0.15}
             className="mt-4 font-display text-[2.15rem] font-semibold leading-[1.05] tracking-tight sm:mt-6 sm:text-5xl lg:text-[3.4rem] xl:text-[3.9rem]"
             lines={[
-              <span id="hero-title">Small Discoveries.</span>,
+              <span id="hero-title">The Path to</span>,
               <>
-                <span className="accent text-violet">Infinite</span> <span className="accent text-forest">Possibilities.</span>
+                <span className="accent text-violet">Knowledge.</span>
               </>,
             ]}
           />
@@ -76,7 +76,7 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.7 }}
             className="mt-4 max-w-md text-[15px] leading-relaxed text-muted-strong sm:mt-5 sm:text-lg"
           >
-            A place where young minds explore boldly, learn deeply, and grow into the people who will shape tomorrow.
+            New Pratham Public School, K R Puram — empowering students to excel academically, grow personally, and lead with confidence.
           </motion.p>
 
           <motion.div
@@ -86,7 +86,7 @@ export function HeroSection() {
             className="mt-6 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:flex-wrap sm:mt-8"
           >
             <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
-              <ButtonLink to="#about-universe" className="w-full min-[420px]:w-auto">Explore Our Universe</ButtonLink>
+              <ButtonLink to="#about-universe" className="w-full min-[420px]:w-auto">Discover NPPS</ButtonLink>
             </motion.div>
             <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}>
               <ButtonLink to="/admissions" variant="dark" className="w-full min-[420px]:w-auto">Start Your Admission Journey</ButtonLink>
@@ -97,7 +97,7 @@ export function HeroSection() {
             <Link to="/visit" className="link-underline inline-flex items-center gap-2 font-semibold text-forest">
               <CalendarCheck className="size-4" aria-hidden="true" /> Book a Campus Visit
             </Link>
-            <span className="hidden text-muted-strong sm:inline">Nursery – Grade 12 · Day school</span>
+            <span className="hidden text-muted-strong sm:inline">CBSE · Affiliation No. {school.affiliation.affiliationNumber}</span>
           </motion.div>
         </div>
 

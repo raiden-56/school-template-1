@@ -8,7 +8,7 @@ import { isDemoMode, submitForm, type SubmitResult } from '@/lib/api'
 import { school } from '@/config/school'
 import { ConsentField, DemoBanner, SelectField, TextArea, TextField, phoneRegex } from './fields'
 
-const subjects = ['General enquiry', 'Admissions', 'Fees', 'Transport', 'Academics', 'Careers', 'Feedback', 'Other'] as const
+const subjects = ['General enquiry', 'Admissions', 'Fees', 'Academics', 'Careers', 'Feedback', 'Other'] as const
 
 const schema = z.object({
   name: z.string().trim().min(2, 'Please enter your name'),

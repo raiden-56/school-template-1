@@ -20,7 +20,7 @@ export const mainNav: NavGroup[] = [
     label: 'Academics', to: '/academics', match: ['/academics'],
     children: [
       { label: 'Curriculum', to: '/academics', description: 'Subjects, pedagogy and assessment' },
-      { label: 'Learning Stages', to: '/academics/stages', description: 'Early Years to Senior Secondary' },
+      { label: 'Learning Stages', to: '/academics/stages', description: 'Pre-primary to Class X' },
       { label: 'Achievements', to: '/student-life/achievements', description: 'Celebrating student success' },
     ],
   },

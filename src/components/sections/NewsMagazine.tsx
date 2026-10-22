@@ -23,7 +23,7 @@ export function FeaturedStory({ a }: { a: NewsArticle }) {
   return (
     <Link to={`/news/${a.slug}`} className="group relative block overflow-hidden rounded-[2.5rem] bg-white text-plum">
       <div className="aspect-[4/3] transition-transform duration-700 group-hover:scale-105 sm:aspect-[16/11]">
-        <ArtImage theme={a.theme} alt={a.title} />
+        <ArtImage theme={a.theme} alt={a.title} src={a.image} />
       </div>
       <div className="absolute left-5 top-5"><DateBadge iso={a.date} /></div>
       <div className="absolute inset-x-3 bottom-3 rounded-[2rem] bg-white/92 p-5 shadow-xl backdrop-blur sm:inset-x-5 sm:bottom-5 sm:p-8">
@@ -39,7 +39,7 @@ export function NewsCard({ a, compact = false }: { a: NewsArticle; compact?: boo
   return (
     <article className="group relative flex gap-4 rounded-[1.75rem] bg-white p-4 shadow-[0_20px_50px_-40px_rgba(33,23,47,.5)] transition-shadow hover:shadow-[0_30px_60px_-30px_rgba(33,23,47,.45)] sm:gap-5 sm:p-5">
       <div className={cn('shrink-0 overflow-hidden rounded-2xl', compact ? 'size-20 sm:size-24' : 'size-24 sm:size-32')}>
-        <ArtImage theme={a.theme} alt="" hideTag />
+        <ArtImage theme={a.theme} alt="" src={a.image} hideTag />
       </div>
       <div className="min-w-0 flex-1">
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-strong">
@@ -75,7 +75,7 @@ export function NewsMagazine() {
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
           <SectionHeading
             eyebrow="News & events"
-            lines={[<span id="news-title">What’s happening</span>, <>in our <span className="accent text-forest">universe.</span></>]}
+            lines={[<span id="news-title">What’s happening</span>, <>at <span className="accent text-forest">NPPS.</span></>]}
           />
           <div className="flex shrink-0 gap-3">
             <ButtonLink to="/news" variant="outline-dark">All news</ButtonLink>

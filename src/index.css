@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   NovaVerse design tokens — every colour, font and radius used by the
+   Design tokens — every colour, font and radius used by the
    site lives here. Tailwind utilities are generated from @theme.
 ------------------------------------------------------------------- */
 @theme {

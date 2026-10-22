@@ -12,7 +12,7 @@ export function FacilityDialog({ facilityId, onClose }: { facilityId: string | n
       {f && (
         <div>
           <div className="aspect-[16/9] overflow-hidden rounded-t-[2rem]">
-            <ArtImage theme={f.theme} alt={f.title} />
+            <ArtImage theme={f.theme} alt={f.title} src={f.image} />
           </div>
           <div className="p-6 sm:p-10">
             <p className="eyebrow text-forest">Facility</p>

@@ -13,9 +13,9 @@ import { school } from '@/config/school'
 import { cn } from '@/lib/cn'
 
 const labels = [
-  { text: 'Inquiry-led learning', cls: 'left-[-4%] top-[14%] bg-lavender', d: 0 },
-  { text: 'Outdoor classrooms', cls: 'right-[-6%] top-[38%] bg-peach', d: 1.2 },
-  { text: 'Arts in every week', cls: 'left-[6%] bottom-[10%] bg-emerald', d: 2.1 },
+  { text: 'Facilitated learning', cls: 'left-[-4%] top-[14%] bg-lavender', d: 0 },
+  { text: 'NEP 2020 aligned', cls: 'right-[-6%] top-[38%] bg-peach', d: 1.2 },
+  { text: 'No donation', cls: 'left-[6%] bottom-[10%] bg-emerald', d: 2.1 },
 ]
 
 /* Section B — A school beyond classrooms */
@@ -27,7 +27,7 @@ export function EditorialAboutSection() {
       </Parallax>
       <div className="container-x">
         <div className="grid gap-6 lg:grid-cols-12">
-          <p className="eyebrow text-forest lg:col-span-12">Beyond classrooms</p>
+          <p className="eyebrow text-forest lg:col-span-12">A few words about us</p>
           <RevealText
             as="h2"
             className="text-giant font-semibold lg:col-span-11"
@@ -42,7 +42,7 @@ export function EditorialAboutSection() {
             </Reveal>
             <Reveal delay={0.1}>
               <ul className="mt-10 grid grid-cols-2 gap-6 border-t border-plum/10 pt-8">
-                {[['Curiosity', 'drives every lesson'], ['Belonging', 'for every child']].map(([a, b]) => (
+                {[['All-round', 'development of every child'], ['No donation', 'quality education, affordable cost']].map(([a, b]) => (
                   <li key={a}>
                     <p className="font-display text-2xl font-semibold">{a}</p>
                     <p className="mt-1 text-sm text-muted-strong">{b}</p>
@@ -58,7 +58,7 @@ export function EditorialAboutSection() {
 
           <div className="relative lg:col-span-7">
             <ClipReveal className="relative mx-auto aspect-[4/5] w-full max-w-xl rounded-t-[999px] sm:aspect-[5/5] lg:ml-auto" to="inset(0% 0% 0% 0% round 999px 999px 40px 40px)">
-              <ArtImage theme="campus" alt="Students walking across the central green of the campus" className="h-full w-full" />
+              <ArtImage theme="campus" src="/images/home/annual-day-2.jpg" alt="Students performing at the New Pratham Public School Annual Day" className="h-full w-full" />
             </ClipReveal>
             {labels.map((l) => (
               <motion.span
@@ -74,7 +74,7 @@ export function EditorialAboutSection() {
                 {l.text}
               </motion.span>
             ))}
-            <RotatingBadge text="Learn · Explore · Grow" className="absolute -bottom-10 right-2 sm:right-10" />
+            <RotatingBadge text="The Path to Knowledge" className="absolute -bottom-10 right-2 sm:right-10" />
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@ export function OurStorySection() {
       <div className="container-x grid gap-14 lg:grid-cols-2 lg:gap-20">
         <div>
           <p className="eyebrow text-forest">Our story</p>
-          <RevealText as="h2" className="mt-5 text-big font-semibold" lines={[<span id="story-title">Built around</span>, <>the <span className="accent text-forest">wonder</span> of learning.</>]} />
+          <RevealText as="h2" className="mt-5 text-big font-semibold" lines={[<span id="story-title">All-round</span>, <><span className="accent text-forest">development</span> of every child.</>]} />
           <Reveal delay={0.1}><p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-strong">{about.history.text}</p></Reveal>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -154,13 +154,13 @@ export function OurStorySection() {
         {/* collage */}
         <div className="relative min-h-[520px] sm:min-h-[640px]">
           <Parallax speed={0.12} className="absolute left-0 top-0 w-[62%]">
-            <div className="aspect-[3/4] overflow-hidden rounded-[2.5rem] rounded-bl-[7rem]"><ArtImage theme="classroom" alt="A Grade 4 classroom during group work" /></div>
+            <div className="aspect-[3/4] overflow-hidden rounded-[2.5rem] rounded-bl-[7rem]"><ArtImage theme="classroom" src="/images/gallery/g13-0.jpg" alt="A pre-primary classroom activity" /></div>
           </Parallax>
           <Parallax speed={-0.18} className="absolute right-0 top-[18%] w-[48%]">
-            <div className="aspect-square overflow-hidden rounded-full ring-8 ring-white"><ArtImage theme="science" alt="Students running an experiment in the lab" seed={1} /></div>
+            <div className="aspect-square overflow-hidden rounded-full ring-8 ring-white"><ArtImage theme="campus" src="/images/campus/school-building.jpg" alt="The New Pratham Public School building at Pai Layout" seed={1} /></div>
           </Parallax>
           <Parallax speed={0.22} className="absolute bottom-0 right-[8%] w-[54%]">
-            <div className="aspect-[4/3] overflow-hidden rounded-[2rem] rounded-tr-[6rem] ring-8 ring-white"><ArtImage theme="art" alt="Student artwork in the art studio" seed={2} /></div>
+            <div className="aspect-[4/3] overflow-hidden rounded-[2rem] rounded-tr-[6rem] ring-8 ring-white"><ArtImage theme="art" src="/images/gallery/g8-0.jpg" alt="Grade 2 students during a clay modelling activity" seed={2} /></div>
           </Parallax>
           <FloatingBook className="absolute bottom-[22%] left-[2%] z-10" />
         </div>
@@ -172,7 +172,7 @@ export function OurStorySection() {
           <Quote className="absolute right-8 top-8 size-24 text-forest/10" aria-hidden="true" />
           <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center">
             <div className="flex items-center gap-4">
-              <div className="grid size-20 place-items-center rounded-full bg-violet font-display text-2xl font-semibold text-white">AS</div>
+              <img src={about.principal.photo} alt={`Portrait of ${about.principal.name}`} className="size-20 rounded-full object-cover" />
               <div>
                 <p className="font-display text-lg font-semibold">{about.principal.name}</p>
                 <p className="text-sm text-muted-strong">{about.principal.title}</p>
@@ -182,7 +182,6 @@ export function OurStorySection() {
               <blockquote className="font-display text-mid font-medium tracking-tight">“{about.principal.excerpt}”</blockquote>
               <div className="mt-6 flex flex-wrap items-center gap-4">
                 <ButtonLink to="/about/principal" variant="dark">Read the principal’s message</ButtonLink>
-                <SampleNote>Sample message — to be written and approved by the principal.</SampleNote>
               </div>
             </div>
           </div>

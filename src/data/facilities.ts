@@ -9,24 +9,27 @@ export interface Facility {
   summary: string
   details: string[]
   link: string
+  /** Real photo. Without it an illustration is shown. */
+  image?: string
 }
 
+/**
+ * Facilities as described on the school's About Us page and in its CBSE
+ * mandatory disclosure (Section E — School infrastructure).
+ */
 const all: Facility[] = [
-  { id: 'smart-classrooms', title: 'Smart Classrooms', theme: 'classroom', size: 'xl', summary: 'Bright, flexible classrooms with interactive displays and movable furniture for group work.', details: ['Interactive display panels', 'Flexible seating for collaborative learning', 'Natural light and ventilation', 'Class libraries in primary rooms'], link: '/campus/facilities#smart-classrooms' },
-  { id: 'science-labs', title: 'Science Laboratories', theme: 'science', size: 'lg', summary: 'Separate physics, chemistry and biology labs designed for hands-on experiments.', details: ['Supervised practical sessions', 'Safety equipment and protocols', 'Junior science lab for middle school'], link: '/campus/facilities#science-labs' },
-  { id: 'computer-labs', title: 'Computer Labs', theme: 'computer', size: 'md', summary: 'Networked labs for coding, design and digital literacy.', details: ['One student per workstation', 'Filtered, monitored internet access', 'Coding & design software'], link: '/campus/facilities#computer-labs' },
-  { id: 'library', title: 'Library', theme: 'library', size: 'lg', summary: 'A calm reading universe with fiction, reference and digital resources.', details: ['Age-graded collections', 'Reading corners and story area', 'Library periods for every class'], link: '/campus/facilities#library' },
-  { id: 'indoor-games', title: 'Indoor Games', theme: 'games', size: 'sm', summary: 'Table tennis, chess, carrom and indoor activity spaces.', details: ['Supervised by sports staff', 'Chess club sessions'], link: '/campus/facilities#indoor-games' },
-  { id: 'outdoor-sports', title: 'Outdoor Sports', theme: 'sports', size: 'lg', summary: 'Playing fields and courts for athletics, football, cricket and more.', details: ['Qualified coaches', 'Age-appropriate play areas', 'Annual sports day'], link: '/campus/facilities#outdoor-sports' },
-  { id: 'art-music', title: 'Art & Music Studios', theme: 'music', size: 'md', summary: 'Studios for painting, sculpture, instrumental and vocal music.', details: ['Exhibition wall for student work', 'Instrument practice rooms'], link: '/campus/facilities#art-music' },
-  { id: 'dance-drama', title: 'Dance & Drama', theme: 'drama', size: 'sm', summary: 'Sprung-floor movement room and drama space.', details: ['Rehearsal space for productions', 'Costume and props storage'], link: '/campus/facilities#dance-drama' },
-  { id: 'auditorium', title: 'Auditorium', theme: 'auditorium', size: 'md', summary: 'A performance hall for assemblies, concerts and events.', details: ['Stage lighting and sound', 'Accessible seating'], link: '/campus/facilities#auditorium' },
-  { id: 'cafeteria', title: 'Cafeteria', theme: 'cafeteria', size: 'sm', summary: 'A clean, airy dining space serving balanced meals (where offered).', details: ['Menu shared with parents', 'Hygiene checks'], link: '/campus/facilities#cafeteria' },
-  { id: 'medical', title: 'Medical Room & First Aid', theme: 'medical', size: 'sm', summary: 'A medical room with first-aid provision during school hours.', details: ['Trained first-aid staff', 'Parent notification procedure'], link: '/campus/facilities#medical' },
-  { id: 'transport', title: 'School Transport', theme: 'transport', size: 'md', summary: 'School bus routes with attendants (subject to route availability).', details: ['Route details on request', 'Attendant on every bus', 'Transport policy for parents'], link: '/campus/facilities#transport' },
-  { id: 'accessible', title: 'Accessible Facilities', theme: 'accessible', size: 'sm', summary: 'Ramps, accessible washrooms and support for students with additional needs.', details: ['Step-free routes to key areas', 'Individual support planning'], link: '/campus/facilities#accessible' },
-  { id: 'gardens', title: 'Gardens & Outdoor Learning', theme: 'garden', size: 'lg', summary: 'Kitchen gardens, a butterfly patch and outdoor classrooms.', details: ['Eco club garden plots', 'Outdoor amphitheatre for lessons'], link: '/campus/facilities#gardens' },
-  { id: 'boarding', title: 'Boarding', theme: 'boarding', size: 'md', summary: 'Residential facilities with house parents.', details: ['Supervised residential life'], link: '/campus/facilities#boarding' },
+  { id: 'classrooms', title: 'A/C Classrooms', theme: 'classroom', size: 'xl', image: '/images/campus/school-building.jpg', summary: '31 air-conditioned classrooms of about 48 sq m each, in our four-storey school building at Pai Layout.', details: ['31 classrooms (approx. 48 sq m each)', 'Air-conditioned learning spaces', 'Internet-enabled campus', 'Activity plan for every learning session'], link: '/campus/facilities#classrooms' },
+  { id: 'laboratories', title: 'Laboratories', theme: 'science', size: 'lg', summary: 'Three well-equipped laboratories, including the computer lab, for hands-on practical learning.', details: ['3 laboratories (approx. 56 sq m each)', 'Science and computer labs', 'Internet facility', 'Supervised practical sessions'], link: '/campus/facilities#laboratories' },
+  { id: 'multi-sports', title: 'NPPS Multi-Sports Activity Centre', theme: 'sports', size: 'lg', image: '/images/home/sports-day.jpg', summary: 'A state-of-the-art playground with a vast play area for our students.', details: ['Vast outdoor play area', 'Sports Day and inter-school meets', 'Professional training for future athletes', 'Kho-kho, athletics and team games'], link: '/campus/facilities#multi-sports' },
+  { id: 'playzone', title: 'NPPS Playzone', theme: 'games', size: 'md', summary: 'A well-defined, futuristic play area with exceptional playing equipment that boosts physical development.', details: ['Modern play equipment', 'Designed for younger children', 'Supervised play'], link: '/campus/facilities#playzone' },
+  { id: 'gymnasium', title: 'Children’s Gymnasium', theme: 'sports', size: 'sm', summary: 'A gymnasium designed for children’s fitness and physical development.', details: ['Age-appropriate equipment', 'Guided by physical education teachers'], link: '/campus/facilities#gymnasium' },
+  { id: 'cricket', title: 'Cricket Bowling Machine', theme: 'sports', size: 'sm', summary: 'Practice batting with a cricket bowling machine.', details: ['Structured cricket practice', 'Guided by physical education teachers'], link: '/campus/facilities#cricket' },
+  { id: 'indoor-sports', title: 'Indoor Sports Activity Centre', theme: 'games', size: 'md', summary: 'Indoor sports and activities, whatever the weather.', details: ['Indoor games and activities', 'Yoga sessions'], link: '/campus/facilities#indoor-sports' },
+  { id: 'mini-pool', title: 'Mini Pool', theme: 'sports', size: 'sm', summary: 'A mini pool for water play and confidence in the water.', details: ['Supervised sessions'], link: '/campus/facilities#mini-pool' },
+  { id: 'student-support', title: 'Special Education & Counselling', theme: 'accessible', size: 'md', summary: 'A qualified special educator and a counsellor & wellness teacher support every learner.', details: ['Special Educator — B.Ed. in Special Education', 'Counsellor & Wellness Teacher — M.Sc. in Psychology', 'Individual support for additional needs'], link: '/campus/facilities#student-support' },
+  { id: 'safety', title: 'Safe & Hygienic Campus', theme: 'medical', size: 'sm', summary: 'Certified building, fire, water and sanitation safety, with separate toilets for girls and boys.', details: ['Building safety certificate', 'Fire safety certificate', 'Water, health & sanitation certificates', '20 girls’ and 20 boys’ toilets'], link: '/campus/facilities#safety' },
+  { id: 'transport', title: 'School Transport', theme: 'transport', size: 'md', summary: 'School transport (details on request).', details: ['Contact the school office for routes'], link: '/campus/facilities#transport' },
+  { id: 'boarding', title: 'Boarding', theme: 'boarding', size: 'md', summary: 'Residential facilities.', details: [], link: '/campus/facilities#boarding' },
 ]
 
 export const facilities = all.filter((f) => f.id !== 'boarding' || school.offers.boarding).filter((f) => f.id !== 'transport' || school.offers.transport)

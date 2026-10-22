@@ -17,7 +17,7 @@ export function AboutPage() {
     <>
       <PageHero
         seoTitle="About the School"
-        title={['About', <span className="accent text-sun">NovaVerse.</span>]}
+        title={['About', <span className="accent text-sun">NPPS.</span>]}
         eyebrow="Our story"
         description={about.intro}
         crumbs={[{ name: 'About', path: '/about' }]}
@@ -103,7 +103,7 @@ export function PrincipalPage() {
       <section className="bg-cream py-20 sm:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] rounded-tl-[7rem]"><ArtImage theme="leadership" alt="Portrait placeholder for the principal" /></div>
+            <div className="aspect-[4/5] overflow-hidden rounded-[2.5rem] rounded-tl-[7rem]"><ArtImage theme="leadership" src={pr.photo} alt={`Portrait of ${pr.name}`} /></div>
             <p className="mt-5 font-display text-2xl font-semibold">{pr.name}</p>
             <p className="text-muted-strong">{pr.title}, {school.name}</p>
           </div>
@@ -123,17 +123,21 @@ export function LeadershipPage() {
   useSetHeaderTone('dark')
   return (
     <>
-      <PageHero seoTitle="Management and Leadership" title={['Management', <>& <span className="accent text-sun">leadership.</span></>]} eyebrow="Governance" description="The people responsible for the school’s direction, quality and care." crumbs={[{ name: 'About', path: '/about' }, { name: 'Leadership', path: '/about/leadership' }]} />
+      <PageHero seoTitle="Management and Leadership" title={['Management', <>& <span className="accent text-sun">leadership.</span></>]} eyebrow="Governance" description={`The people responsible for the school’s direction, quality and care. New Pratham Public School is managed by ${school.trust}.`} crumbs={[{ name: 'About', path: '/about' }, { name: 'Leadership', path: '/about/leadership' }]} />
       <section className="bg-cream py-20 sm:py-28">
         <div className="container-x">
           <SampleNote>Names marked “to be published” will be added once confirmed by the school management.</SampleNote>
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {about.leadership.map((l, i) => (
-              <motion.li key={l.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="rounded-[2rem] bg-white p-7">
-                <Users className="size-7 text-forest" aria-hidden="true" />
-                <h2 className="mt-5 font-display text-xl font-semibold">{l.name}</h2>
-                <p className="mt-1 text-sm font-semibold text-forest">{l.person}</p>
-                <p className="mt-3 text-sm text-muted-strong">{l.role}</p>
+              <motion.li key={l.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="overflow-hidden rounded-[2rem] bg-white">
+                {l.photo && <div className="aspect-[4/3] overflow-hidden"><img src={l.photo} alt={`Portrait of ${l.person}`} loading="lazy" className="h-full w-full object-cover object-top" /></div>}
+                <div className="p-7">
+                  {!l.photo && <Users className="size-7 text-forest" aria-hidden="true" />}
+                  <h2 className={l.photo ? 'font-display text-xl font-semibold' : 'mt-5 font-display text-xl font-semibold'}>{l.name}</h2>
+                  <p className="mt-1 text-sm font-semibold text-forest">{l.person}</p>
+                  <p className="mt-3 text-sm text-muted-strong">{l.role}</p>
+                  {l.message && <blockquote className="mt-4 border-l-2 border-forest/30 pl-4 text-sm italic leading-relaxed text-plum/80">“{l.message}”</blockquote>}
+                </div>
               </motion.li>
             ))}
           </ul>
@@ -148,13 +152,13 @@ export function CareersPage() {
   useSetHeaderTone('light')
   return (
     <>
-      <PageHero tone="peach" seoTitle="Careers" title={['Teach with', <span className="accent text-forest">us.</span>]} eyebrow="Careers" description="We look for educators who are curious, kind and committed to every child’s growth." crumbs={[{ name: 'Careers', path: '/careers' }]} />
+      <PageHero tone="peach" seoTitle="Careers" title={['Teach with', <span className="accent text-forest">us.</span>]} eyebrow="Careers" description="We look for dedicated educators trained to teach in line with NEP 2020 — committed to every child’s all-round development." crumbs={[{ name: 'Careers', path: '/careers' }]} />
       <section className="bg-cream py-20 sm:py-28">
         <div className="container-x grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <h2 className="font-display text-mid font-semibold">Why work here</h2>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-              {['Professional development every term', 'Collaborative planning time', 'Small advisory groups', 'Modern learning spaces'].map((t) => (
+              {['Capacity Building Programmes with CBSE', 'Training in technology in the classroom', 'NEP 2020 pedagogy', 'A/C classrooms and modern facilities'].map((t) => (
                 <li key={t} className="rounded-[1.5rem] bg-white p-5 font-medium">{t}</li>
               ))}
             </ul>
@@ -181,7 +185,7 @@ export function AlumniPage() {
   useSetHeaderTone('dark')
   return (
     <>
-      <PageHero seoTitle="Alumni" title={['Once NovaVerse,', <span className="accent text-sun">always NovaVerse.</span>]} eyebrow="Alumni" description="Our graduates are part of our community for life. Stay connected, come back and inspire the next generation." crumbs={[{ name: 'Alumni', path: '/alumni' }]} />
+      <PageHero seoTitle="Alumni" title={['Once a Prathamite,', <span className="accent text-sun">always a Prathamite.</span>]} eyebrow="Alumni" description="Our Class X graduates are part of the NPPS family for life. Stay connected, come back and inspire the next generation. Past students can request transfer certificates from the school office." crumbs={[{ name: 'Alumni', path: '/alumni' }]} />
       <section className="bg-cream py-20 sm:py-28">
         <div className="container-x grid gap-6 md:grid-cols-3">
           {[

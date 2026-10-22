@@ -9,9 +9,8 @@ import { ContactDetails, ParentStudentHub } from '@/components/sections/Communit
 import { ContactForm } from '@/components/forms'
 import { Accordion } from '@/components/ui/Accordion'
 import { ButtonLink } from '@/components/ui/Button'
-import { SampleNote } from '@/components/ui/misc'
 import { OrbitFallback } from '@/components/three/fallbacks'
-import { documents, faqs } from '@/data/info'
+import { documents, faqs, officialDocs } from '@/data/info'
 import { policies } from '@/data/policies'
 import { notPublished, school } from '@/config/school'
 import { cn } from '@/lib/cn'
@@ -19,17 +18,16 @@ import { cn } from '@/lib/cn'
 export function ParentsPage() {
   return (
     <>
-      <PageHero seoTitle="Parent Resources" title={['Parent', <span className="accent text-sun">resources.</span>]} eyebrow="For families" description="Portals, calendars, policies, transport and the parent handbook — everything in one place." crumbs={[{ name: 'Parent Resources', path: '/parents' }]} />
+      <PageHero seoTitle="Parent Resources" title={['Parent', <span className="accent text-sun">resources.</span>]} eyebrow="For families" description="Fee structure, academic calendar, results, notices and mandatory disclosures — everything in one place." crumbs={[{ name: 'Parent Resources', path: '/parents' }]} />
       <ParentStudentHub audience="parents" showHeading={false} />
       <section className="bg-white py-16 sm:py-24" aria-labelledby="docs-title">
         <div className="container-x">
           <h2 id="docs-title" className="font-display text-mid font-semibold">Documents</h2>
           <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {documents.map((d) => (
-              <li key={d.href}><a href={d.href} download className="flex items-center gap-3 rounded-2xl bg-cream px-5 py-4 font-medium hover:bg-sage"><FileDown className="size-5 text-forest" aria-hidden="true" />{d.label}<span className="ml-auto text-xs text-muted-strong">PDF</span></a></li>
+              <li key={d.href}><a href={d.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-2xl bg-cream px-5 py-4 font-medium hover:bg-sage"><FileDown className="size-5 text-forest" aria-hidden="true" />{d.label}<span className="ml-auto text-xs text-muted-strong">PDF</span></a></li>
             ))}
           </ul>
-          <SampleNote className="mt-6">Documents provided are labelled samples. Replace them in <code>public/documents</code>.</SampleNote>
         </div>
       </section>
     </>
@@ -108,32 +106,91 @@ export function DisclosuresPage() {
     ['Affiliating board', a.board],
     ['Affiliation number', a.affiliationNumber ?? notPublished],
     ['School code', a.schoolCode ?? notPublished],
-    ['UDISE code', a.udiseCode ?? notPublished],
     ['Complete address', school.contact.addressLines.slice(1).join(', ')],
-    ['Principal', `Dr. A. Sample (sample)`],
+    ['Principal', 'Jeevarathnam Reddy K.'],
+    ['Principal’s qualification', 'M.A., B.Ed.'],
     ['School email', school.contact.email],
-    ['Contact number', school.contact.phone],
-    ['Year of establishment', school.founded ? String(school.founded) : notPublished],
+    ['Contact number', '97318 57345'],
+    ['Managed by', school.trust],
   ]
-  const docs = ['Affiliation / upgradation letter', 'Society / trust registration certificate', 'No objection certificate (NOC)', 'Recognition certificate', 'Building safety certificate', 'Fire safety certificate', 'Water, health & sanitation certificates', 'Fee structure', 'Annual academic calendar', 'School management committee (SMC) list', 'PTA members list', 'Last three years’ board results']
+  const docs: [string, string][] = [
+    ['Affiliation / upgradation letter and recent extension of affiliation', officialDocs.affiliation],
+    ['Society / trust registration certificate', officialDocs.trust],
+    ['No objection certificate (NOC) issued by the State Government', officialDocs.noc],
+    ['Recognition certificate under the RTE Act, 2009', officialDocs.recognition],
+    ['Building safety certificate (National Building Code)', officialDocs.building],
+    ['Fire safety certificate', officialDocs.fire],
+    ['Self-certification submitted for affiliation', officialDocs.selfCertification],
+    ['Water, health & sanitation certificates', officialDocs.waterHealth],
+  ]
+  const academics: [string, string][] = [
+    ['Fee structure of the school', officialDocs.fees],
+    ['Annual academic calendar', officialDocs.calendar],
+    ['List of School Management Committee (SMC)', officialDocs.smc],
+    ['List of Parents Teachers Association (PTA) members', officialDocs.pta],
+    ['Last three years’ results of the board examination', officialDocs.results],
+  ]
+  const staff: [string, string][] = [
+    ['Principal', 'Jeevarathnam Reddy K.'],
+    ['Total number of teachers', '43 (PGT 4 · TGT 22 · PRT 16)'],
+    ['Teacher–section ratio', '1 : 1.5'],
+    ['Special educator', 'Priya R., B.Ed. in Special Education'],
+    ['Counsellor & wellness teacher', 'Alice A., M.Sc. in Psychology'],
+  ]
+  const results: [string, string, string, string][] = [
+    ['2023–24', '77', '76', '98.07%'],
+    ['2024–25', '77', '77', '100%'],
+    ['2025–26', '65', '65', '100%'],
+  ]
+  const infra: [string, string][] = [
+    ['Total campus area', '2,415.48 sq m'],
+    ['Classrooms (number & size)', '31 rooms · 48 sq m each'],
+    ['Laboratories incl. computer labs (number & size)', '3 labs · 56 sq m each'],
+    ['Internet facility', 'Yes'],
+    ['Girls’ toilets', '20'],
+    ['Boys’ toilets', '20'],
+  ]
+  const table = (caption: string, data: [string, string][]) => (
+    <div className="mt-4 overflow-x-auto rounded-[1.5rem] bg-white">
+      <table className="w-full min-w-[480px] text-left text-sm">
+        <caption className="sr-only">{caption}</caption>
+        <tbody>{data.map(([k, v]) => <tr key={k} className="border-b border-plum/5 last:border-0"><th scope="row" className="w-1/2 px-5 py-3.5 font-semibold">{k}</th><td className="px-5 py-3.5 text-muted-strong">{v}</td></tr>)}</tbody>
+      </table>
+    </div>
+  )
+  const links = (data: [string, string][]) => (
+    <ul className="mt-4 divide-y divide-plum/5 rounded-[1.5rem] bg-white">
+      {data.map(([d, href]) => (
+        <li key={d}><a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 px-5 py-3.5 text-sm hover:bg-sage/50"><span>{d}</span><span className="inline-flex shrink-0 items-center gap-1 font-semibold text-forest"><FileDown className="size-4" aria-hidden="true" />PDF<span className="sr-only"> (opens in a new tab)</span></span></a></li>
+      ))}
+    </ul>
+  )
   return (
     <>
-      <PageHero seoTitle="Mandatory Disclosures and School Policies" title={['Mandatory', <span className="accent text-sun">disclosures.</span>]} eyebrow="Transparency" description="Statutory information and school policies, published as required by the affiliating board." crumbs={[{ name: 'Disclosures', path: '/disclosures' }]} />
+      <PageHero seoTitle="Mandatory Public Disclosure and School Policies" title={['Mandatory', <span className="accent text-sun">disclosure.</span>]} eyebrow="CBSE Appendix IX" description="Statutory information and documents published as required by the Central Board of Secondary Education." crumbs={[{ name: 'Disclosures', path: '/disclosures' }]} />
       <section className="bg-cream py-16 sm:py-24">
         <div className="container-x grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <SampleNote force>Official IDs, certificates and results are never invented. Fields read “{notPublished}” until the school supplies verified information.</SampleNote>
-            <h2 className="mt-8 font-display text-2xl font-semibold">A. General information</h2>
+            <h2 className="font-display text-2xl font-semibold">A. General information</h2>
+            {table('General information', rows)}
+            <h2 className="mt-12 font-display text-2xl font-semibold">B. Documents & information</h2>
+            {links(docs)}
+            <h2 className="mt-12 font-display text-2xl font-semibold">C. Result & academics</h2>
+            {links(academics)}
+            <h2 className="mt-12 font-display text-2xl font-semibold">D. Staff (teaching)</h2>
+            {table('Teaching staff', staff)}
+            <p className="mt-3 text-sm text-muted-strong">The full teacher list is on the <Link to="/faculty" className="font-semibold text-forest underline">Faculty & Staff</Link> page.</p>
+            <h2 className="mt-12 font-display text-2xl font-semibold">Board results — Class X</h2>
             <div className="mt-4 overflow-x-auto rounded-[1.5rem] bg-white">
               <table className="w-full min-w-[480px] text-left text-sm">
-                <caption className="sr-only">General information</caption>
-                <tbody>{rows.map(([k, v]) => <tr key={k} className="border-b border-plum/5 last:border-0"><th scope="row" className="w-1/2 px-5 py-3.5 font-semibold">{k}</th><td className="px-5 py-3.5 text-muted-strong">{v}</td></tr>)}</tbody>
+                <caption className="sr-only">Class X board examination results</caption>
+                <thead><tr className="border-b border-plum/10">{['Year', 'Appeared', 'Passed', 'Pass %'].map((h) => <th key={h} scope="col" className="px-5 py-3.5 font-semibold">{h}</th>)}</tr></thead>
+                <tbody>{results.map((r) => <tr key={r[0]} className="border-b border-plum/5 last:border-0">{r.map((c, i) => <td key={i} className="px-5 py-3.5 text-muted-strong">{c}</td>)}</tr>)}</tbody>
               </table>
             </div>
-            <h2 className="mt-12 font-display text-2xl font-semibold">B. Documents & information</h2>
-            <ul className="mt-4 divide-y divide-plum/5 rounded-[1.5rem] bg-white">
-              {docs.map((d) => <li key={d} className="flex flex-wrap items-center justify-between gap-2 px-5 py-3.5 text-sm"><span>{d}</span><span className="text-muted-strong">{notPublished}</span></li>)}
-            </ul>
+            <h2 className="mt-12 font-display text-2xl font-semibold">E. School infrastructure</h2>
+            {table('School infrastructure', infra)}
+            <a href={officialDocs.infrastructureVideo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-forest underline-offset-4 hover:underline">Watch the infrastructure inspection video on YouTube<span className="sr-only"> (opens in a new tab)</span></a>
           </div>
           <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
             <h2 className="font-display text-2xl font-semibold">School policies</h2>

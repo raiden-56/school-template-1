@@ -57,7 +57,7 @@ function HorizontalGallery() {
         {activities.map((a, i) => (
           <figure key={a.id} className={cn('relative shrink-0', i % 2 ? 'self-end mb-[10vh]' : 'self-start mt-[16vh]')}>
             <div className={cn('overflow-hidden rounded-[2rem]', widths[a.aspect], i % 3 === 0 && 'rounded-tr-[6rem]', i % 3 === 1 && 'rounded-bl-[6rem]')}>
-              <ArtImage theme={a.theme} alt={a.title} seed={i} />
+              <ArtImage theme={a.theme} alt={a.title} src={a.image} seed={i} />
             </div>
             <figcaption className={cn('absolute max-w-[260px] rounded-2xl bg-white p-4 text-plum shadow-2xl', i % 2 ? '-top-10 left-6' : '-bottom-10 right-6')}>
               <span className="font-display text-xs text-forest">{String(i + 1).padStart(2, '0')}</span>
@@ -81,7 +81,7 @@ function VerticalGallery() {
           <motion.li key={a.id} initial={{ opacity: 0, x: i % 2 ? 40 : -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.7 }} className={cn(i % 2 === 1 && 'sm:mt-16')}>
             <figure>
               <div className={cn('overflow-hidden rounded-[2rem]', a.aspect === 'tall' ? 'aspect-[3/4]' : a.aspect === 'wide' ? 'aspect-[4/3]' : 'aspect-square')}>
-                <ArtImage theme={a.theme} alt={a.title} seed={i} />
+                <ArtImage theme={a.theme} alt={a.title} src={a.image} seed={i} />
               </div>
               <figcaption className="mt-4">
                 <span className="font-display text-xl font-semibold">{a.title}</span>

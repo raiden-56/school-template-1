@@ -31,7 +31,7 @@ function Tile({ f, i, onOpen }: { f: Facility; i: number; onOpen: () => void }) 
           {photo ? (
             <>
               <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
-                <ArtImage theme={f.theme} alt="" seed={i} hideTag={f.size === 'md'} />
+                <ArtImage theme={f.theme} alt="" src={f.image} seed={i} hideTag={f.size === 'md'} />
               </div>
             </>
           ) : (

@@ -1,58 +1,66 @@
 /**
  * Central school configuration.
  *
- * EVERYTHING school-specific lives here or in /src/data. Replace the sample
- * values with verified, approved information before publishing.
+ * EVERYTHING school-specific lives here or in /src/data. Content is taken from
+ * the school's existing website (newprathampublicschool.in), its CBSE
+ * mandatory public disclosure and the documents linked from it.
  *
  * Values set to `null` are rendered as "To be published by the school office"
  * rather than being invented.
  */
 
 export const school = {
-  name: 'NovaVerse International School',
-  shortName: 'NovaVerse',
-  tagline: 'Small Discoveries. Infinite Possibilities.',
+  name: 'New Pratham Public School',
+  shortName: 'NPPS',
+  tagline: 'The Path to Knowledge',
   description:
-    'NovaVerse International School is a day school where young minds explore boldly, learn deeply and grow into the people who will shape tomorrow.',
-  siteUrl: 'https://www.novaverse.example',
+    'New Pratham Public School (NPPS) is a CBSE-affiliated school in K R Puram, Bengaluru, offering classes from Nursery to Class X with a vision of all-round development for every child — quality education at an affordable cost, with no donation.',
+  siteUrl: 'https://www.newprathampublicschool.in',
 
   /** Marks the whole site as carrying sample content. Set false once real content is in. */
-  isSampleContent: true,
+  isSampleContent: false,
 
-  academicYear: '2027–28',
+  academicYear: '2026–27',
   admissionsOpen: true,
 
   founded: null as number | null,
 
+  /** Trust that manages the school (as shown on official school documents). */
+  trust: 'Sree Venkateshwara Charitable Trust',
+
   affiliation: {
-    board: 'Curriculum board — to be confirmed',
-    affiliationNumber: null as string | null,
-    schoolCode: null as string | null,
+    board: 'Central Board of Secondary Education (CBSE), New Delhi',
+    affiliationNumber: '830770' as string | null,
+    schoolCode: '45656' as string | null,
     udiseCode: null as string | null,
   },
 
   contact: {
-    addressLines: ['NovaVerse International School', '123 Sample Avenue, Placeholder District', 'City, State 000000', 'India'],
-    /** Used for the "Get directions" link. Replace with the verified address or a Google Maps place URL. */
-    mapsQuery: 'NovaVerse International School',
+    addressLines: ['New Pratham Public School', 'No. 3, 2nd Cross, 2nd Main, Pai Layout', 'K R Puram, Bengaluru – 560016', 'Karnataka, India'],
+    /** Used for the "Get directions" link. Replace with a Google Maps place URL once available. */
+    mapsQuery: 'New Pratham Public School, Pai Layout, K R Puram, Bengaluru 560016',
     mapsUrl: null as string | null,
-    phone: '+91 00000 00000',
-    phoneHref: 'tel:+910000000000',
-    whatsapp: null as string | null,
-    email: 'info@novaverse.example',
-    admissionsEmail: 'admissions@novaverse.example',
+    phone: '080 4095 4645',
+    phoneHref: 'tel:+918040954645',
+    /** Additional numbers published by the school. */
+    mobiles: [
+      { label: '74067 92525', href: 'tel:+917406792525' },
+      { label: '74831 74599', href: 'tel:+917483174599' },
+      { label: '97318 57345', href: 'tel:+919731857345' },
+    ],
+    whatsapp: 'https://wa.me/917204347528?text=Hello%20New%20Pratham%20Public%20School%2C%20I%20need%20some%20information.' as string | null,
+    email: 'newprathampublicschool@gmail.com',
+    admissionsEmail: 'newprathampublicschool@gmail.com',
+    alternateEmail: 'newpratham@gmail.com',
     officeHours: [
-      { days: 'Monday – Friday', hours: '8:00 AM – 4:00 PM' },
-      { days: 'Saturday', hours: '9:00 AM – 1:00 PM' },
-      { days: 'Sunday & public holidays', hours: 'Closed' },
+      { days: 'Office hours', hours: 'Please call the school office to confirm timings' },
     ],
   },
 
   social: [
-    { label: 'Instagram', href: 'https://instagram.com/' },
-    { label: 'YouTube', href: 'https://youtube.com/' },
-    { label: 'Facebook', href: 'https://facebook.com/' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/' },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61574280760755' },
+    { label: 'Instagram', href: 'https://www.instagram.com/newprathampublicschool' },
+    { label: 'WhatsApp', href: 'https://wa.me/917204347528' },
   ],
 
   /** External portals — set to the real URLs. `null` shows a "not yet available" state. */
@@ -75,33 +83,33 @@ export const school = {
 
   /** Feature switches for optional offerings. */
   offers: {
-    seniorSecondary: true,
+    seniorSecondary: false,
     boarding: false,
-    scholarships: true,
+    scholarships: false,
     careers: true,
     alumni: true,
-    transport: true,
+    transport: false,
     counselling: true,
   },
 
   announcements: [
-    { text: 'New Academic Session 2027–28 | Admissions Now Open', href: '/admissions' },
-    { text: 'Campus visits every Saturday — book your slot online', href: '/visit' },
-    { text: 'Sample notice: Term 1 calendar is now available for download', href: '/events' },
+    { text: 'Class X CBSE results 2025–26: 100% pass — congratulations, Prathamites!', href: '/student-life/achievements' },
+    { text: 'School reopens on 22 October 2026 after the Dasara vacation', href: '/events' },
+    { text: 'Admission enquiries welcome — Nursery to Class X', href: '/admissions' },
   ],
 
   /**
-   * "At a glance" figures. `verified: false` adds a visible "sample figures" note.
-   * Only publish numbers the school can substantiate.
+   * "At a glance" figures, taken from the school's CBSE mandatory disclosure
+   * and three-year results statement.
    */
   highlights: {
-    verified: false,
+    verified: true,
     items: [
-      { value: 15, suffix: '', label: 'Grade levels', detail: 'Nursery to Grade 12' },
-      { value: 1, suffix: '', label: 'Curriculum', detail: 'Board to be confirmed' },
-      { value: 12, suffix: '+', label: 'Years of teaching experience', detail: 'Sample figure' },
-      { value: 40, suffix: '+', label: 'Learning spaces', detail: 'Labs, studios & classrooms' },
-      { value: 25, suffix: '+', label: 'Clubs & activities', detail: 'Sports, arts & STEM' },
+      { value: 13, suffix: '', label: 'Grade levels', detail: 'Nursery to Class X' },
+      { value: 43, suffix: '', label: 'Teachers', detail: 'PGT, TGT, PRT & pre-primary' },
+      { value: 100, suffix: '%', label: 'Class X pass', detail: 'CBSE board, 2024–25 & 2025–26' },
+      { value: 31, suffix: '', label: 'Classrooms', detail: 'Plus 3 laboratories' },
+      { value: 2, suffix: '', label: 'Playgrounds', detail: 'Multi-sports centre & Playzone' },
     ],
   },
 } as const

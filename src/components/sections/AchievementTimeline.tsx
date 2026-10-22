@@ -10,7 +10,7 @@ import { gsap } from '@/lib/gsap'
 import { cn } from '@/lib/cn'
 
 const themeFor: Record<Achievement['category'], ArtTheme> = {
-  Academic: 'award', Sports: 'sports', Cultural: 'music', Science: 'science', Olympiad: 'math', Projects: 'garden', Community: 'community', Alumni: 'leadership',
+  Academic: 'award', Sports: 'sports', Awards: 'award', Competitions: 'math',
 }
 
 /* Section L — scroll-driven achievement timeline */
@@ -73,7 +73,7 @@ export function AchievementTimeline({ limit, filterable = false }: { limit?: num
                 >
                   <p className="font-display text-5xl font-semibold tracking-tighter text-plum/15 sm:text-6xl">{a.year}</p>
                   <article className={cn('mt-2 overflow-hidden rounded-[2rem] bg-white/80 text-left shadow-[0_30px_60px_-40px_rgba(33,23,47,.5)] backdrop-blur', a.featured && 'ring-2 ring-plum/10')}>
-                    {a.featured && <div className="aspect-[16/8]"><ArtImage theme={themeFor[a.category]} alt={a.title} seed={i} /></div>}
+                    {(a.featured || a.image) && <div className="aspect-[16/8]"><ArtImage theme={themeFor[a.category]} alt={a.title} src={a.image} seed={i} /></div>}
                     <div className={cn('p-6', a.featured && 'sm:p-8')}>
                       <span className="rounded-full bg-lavender px-3 py-1 text-xs font-semibold">{a.category}</span>
                       <h3 className={cn('mt-4 font-display font-semibold', a.featured ? 'text-2xl sm:text-3xl' : 'text-xl')}>{a.title}</h3>

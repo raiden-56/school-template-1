@@ -5,6 +5,7 @@ import {
   Map, Mic, Monitor, Palette, PartyPopper, Presentation, School, Sigma, Sprout, Stethoscope, Theater, Trophy, Utensils, Languages, Users,
 } from 'lucide-react'
 import { cn } from '@/lib/cn'
+import { school } from '@/config/school'
 
 export type ArtTheme =
   | 'campus' | 'classroom' | 'science' | 'library' | 'sports' | 'games' | 'music' | 'art' | 'drama' | 'robotics' | 'computer'
@@ -64,7 +65,7 @@ export function ArtImage({ theme, alt, src, className, hideTag, seed = 0, iconSc
   const id = `g-${theme}-${seed}`
 
   return (
-    <div role="img" aria-label={`${alt} (sample illustration)`} className={cn('relative h-full w-full overflow-hidden', className)} style={{ background: `linear-gradient(140deg, ${c1}, ${c2})` }}>
+    <div role="img" aria-label={`${alt} (illustration)`} className={cn('relative h-full w-full overflow-hidden', className)} style={{ background: `linear-gradient(140deg, ${c1}, ${c2})` }}>
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
           <radialGradient id={id} cx="50%" cy="40%" r="60%">
@@ -105,7 +106,7 @@ export function ArtImage({ theme, alt, src, className, hideTag, seed = 0, iconSc
       )}
       {!hideTag && (
         <span className="absolute bottom-3 left-3 rounded-full bg-black/40 px-2.5 py-1 font-display text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
-          Sample visual
+          {school.isSampleContent ? 'Sample visual' : 'Illustration'}
         </span>
       )}
     </div>
